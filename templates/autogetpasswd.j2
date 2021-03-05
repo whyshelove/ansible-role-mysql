@@ -1,0 +1,5 @@
+#!/bin/bash
+str=`grep 'temporary password' /var/log/mysqld.log`
+substr=${str:0-12}
+cmd="sed -i 's?这里替换密码?${substr}?' /tmp/mysql_secure_installation.exp"
+eval ${cmd}

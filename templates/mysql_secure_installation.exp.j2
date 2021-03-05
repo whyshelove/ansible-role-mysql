@@ -1,0 +1,14 @@
+#!/usr/bin/expect
+set timeout 60
+spawn mysql_secure_installation
+expect {
+"Enter password for user root" { send "这里替换密码\r"; exp_continue}
+"New password" { send "{{ mysql_root_password }}\r" ; exp_continue}
+"Re-enter new password" { send "{{ mysql_root_password }}\r" ; exp_continue}
+"Change the password for root" { send "N\r" ; exp_continue}
+"anonymous users" { send "Y\r" ; exp_continue}
+"root login remotely" { send "n\r" ; exp_continue}
+"Remove test database" { send "Y\r" ; exp_continue}
+"Reload privilege tables" { send "Y\r" ; }
+}
+interact 
