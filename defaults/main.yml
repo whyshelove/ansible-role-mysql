@@ -106,14 +106,21 @@ mysql_config_include_files: []
 #  - { src: path/relative/to/playbook/anotherfile.cnf, force: yes }
 
 # Databases.
-mysql_databases: []
+mysql_databases: 
+  - name: tp5shop
+    collation: utf8_general_ci
+    encoding: utf8    
 #   - name: example
 #     collation: utf8_general_ci
 #     encoding: utf8
 #     replicate: 1
 
 # Users.
-mysql_users: []
+mysql_users:
+  - name: tp5shop
+    host: 192.168.122.%
+    password: toor
+    priv: *.*:ALL,GRANT
 #   - name: example
 #     host: 127.0.0.1
 #     password: secret
@@ -127,4 +134,8 @@ mysql_expire_logs_days: "10"
 mysql_replication_role: ''
 mysql_replication_master: ''
 # Same keys as `mysql_users` above.
-mysql_replication_user: []
+mysql_replication_user:
+ - name: rep
+   host: '%'
+   password: toor
+   priv: '*.*:REPLICATION SLAVE,REPLICATION CLIENT'
