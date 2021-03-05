@@ -1,14 +1,14 @@
 ---
 # Set this to the user ansible is logging in as - should have root
 # or sudo access
-mysql_user_home: /root
-mysql_user_name: root
-mysql_user_password: root
-
+mysql_user_home: /home
+mysql_user_name: user
+mysql_user_password: toor
+mysql_user_host: localhost
 # The default root user installed by mysql - almost always root
 mysql_root_home: /root
 mysql_root_username: root
-mysql_root_password: root
+mysql_root_password: TrG8y/i,&1<s
 
 # Set this to `true` to forcibly update the root password.
 mysql_root_password_update: false
@@ -41,7 +41,7 @@ mysql_port: "3306"
 mysql_bind_address: '0.0.0.0'
 mysql_skip_name_resolve: false
 mysql_datadir: /var/lib/mysql
-mysql_sql_mode: ''
+mysql_sql_mode: 'NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES'
 # The following variables have a default value depending on operating system.
 # mysql_pid_file: /var/run/mysqld/mysqld.pid
 # mysql_socket: /var/lib/mysql/mysql.sock
@@ -106,6 +106,13 @@ mysql_config_include_files: []
 #  - { src: path/relative/to/playbook/anotherfile.cnf, force: yes }
 
 # Databases.
+database_creation: true
+dump_database: false
+dump_name: create.sql.gz
+
+restore_database: true
+restore_name: tp5shop.sql
+
 mysql_databases: 
   - name: tp5shop
     collation: utf8_general_ci
