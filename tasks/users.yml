@@ -10,3 +10,26 @@
     encrypted: "{{ item.encrypted | default('no') }}"
   with_items: "{{ mysql_users }}"
   no_log: true
+
+- name: Dump database
+  mysql_db:
+    name: "{{ item.name }}"
+    state: dump
+    target: /tmp/{{ dump_name }}
+  with_items: "{{ mysql_databases }}"
+  when:
+    - dump_database
+
+- name: Copy database restore file
+  copy:
+    src: files/{{ restore_name }}
+    dest: /tmp
+  when: restore_database
+
+- name: Restore database
+  mysql_db:
+    name: "{{ item.name }}"
+    state: import
+    target: /tmp/{{ restore_name }}
+  with_items: "{{ mysql_databases }}"
+  when: restore_database
