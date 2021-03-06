@@ -123,7 +123,7 @@ mysql_users: []
 #  - name: tp5shop
 #    host: 192.168.122.%
 #    password: toor
-#    priv: {{mysql_databases.name }}.*:ALL,GRANT
+#    priv: tp5shop.*:ALL,GRANT
 
 # Replication settings (replication is only enabled if master/user have values).
 mysql_server_id: "1"
@@ -133,8 +133,8 @@ mysql_expire_logs_days: "10"
 mysql_replication_role: ''
 mysql_replication_master: ''
 # Same keys as `mysql_users` above.
-mysql_replication_user:
- - name: rep
-   host: '%'
-   password: toor
-   priv: '*.*:REPLICATION SLAVE,REPLICATION CLIENT'
+mysql_replication_user: []
+# - name: rep
+#   host: '%'
+#   password: toor
+#   priv: '*.*:REPLICATION SLAVE,REPLICATION CLIENT'
