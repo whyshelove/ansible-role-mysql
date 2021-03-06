@@ -81,6 +81,5 @@
     - mysql_log | default(true)
     - mysql_log_error | default(false)
   tags: ['skip_ansible_galaxy']
-
-notify:
+  notify:
     - restart mysql
