@@ -18,13 +18,13 @@
     target: /tmp/{{ dump_name }}
   with_items: "{{ mysql_databases }}"
   when:
-    - dump_name
+    - dump_database
 
 - name: Copy database restore file
   copy:
     src: files/{{ restore_name }}
     dest: /tmp
-  when: restore_name
+  when: restore_database
 
 - name: Restore database
   mysql_db:
@@ -32,4 +32,4 @@
     state: import
     target: /tmp/{{ restore_name }}
   with_items: "{{ mysql_databases }}"
-  when: restore_name
+  when: restore_database
