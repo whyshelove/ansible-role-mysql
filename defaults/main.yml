@@ -109,14 +109,14 @@ mysql_config_include_files: []
 dump_name: #create.sql.gz
 restore_name: #tp5shop.sql
 
-mysql_databases: 
+mysql_databases: []
 #  - name: tp5shop
 #    collation: utf8_general_ci
 #    encoding: utf8    
 #     replicate: 1
 
 # Users.
-mysql_users:
+mysql_users: []
 #  - name: tp5shop
 #    host: 192.168.122.%
 #    password: toor
