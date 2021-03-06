@@ -82,6 +82,5 @@
     - mysql_log_error | default(false)
   tags: ['skip_ansible_galaxy']
 
-- name: Ensure MySQL is restarted.
-  service: "name={{ mysql_daemon }} state=restarted"
-  register: mysql_service_configuration
+notify:
+    - restart mysql
