@@ -106,32 +106,21 @@ mysql_config_include_files: []
 #  - { src: path/relative/to/playbook/anotherfile.cnf, force: yes }
 
 # Databases.
-database_creation: true
-dump_database: false
-dump_name: create.sql.gz
-
-restore_database: true
-restore_name: tp5shop.sql
+dump_name: #create.sql.gz
+restore_name: #tp5shop.sql
 
 mysql_databases: 
-  - name: tp5shop
-    collation: utf8_general_ci
-    encoding: utf8    
-#   - name: example
-#     collation: utf8_general_ci
-#     encoding: utf8
+#  - name: tp5shop
+#    collation: utf8_general_ci
+#    encoding: utf8    
 #     replicate: 1
 
 # Users.
 mysql_users:
-  - name: tp5shop
-    host: 192.168.122.%
-    password: toor
-    priv: *.*:ALL,GRANT
-#   - name: example
-#     host: 127.0.0.1
-#     password: secret
-#     priv: *.*:USAGE
+#  - name: tp5shop
+#    host: 192.168.122.%
+#    password: toor
+#    priv: {{mysql_databases.name }}.*:ALL,GRANT
 
 # Replication settings (replication is only enabled if master/user have values).
 mysql_server_id: "1"
