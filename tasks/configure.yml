@@ -59,25 +59,3 @@
     group: "{{ mysql_log_file_group }}"
     mode: 0640
   when: mysql_slow_query_log_enabled
-
-- name: Create error log file (if configured).
-  command: "touch {{ mysql_log_error }}"
-  args:
-    creates: "{{ mysql_log_error }}"
-    warn: false
-  when:
-    - mysql_log | default(true)
-    - mysql_log_error | default(false)
-  tags: ['skip_ansible_galaxy']
-
-- name: Set ownership on error log file (if configured).
-  file:
-    path: "{{ mysql_log_error }}"
-    state: file
-    owner: mysql
-    group: "{{ mysql_log_file_group }}"
-    mode: 0640
-  when:
-    - mysql_log | default(true)
-    - mysql_log_error | default(false)
-  tags: ['skip_ansible_galaxy']
