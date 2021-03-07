@@ -26,7 +26,6 @@ syslog-tag = {{ mysql_syslog_tag }}
 {% if mysql_log %}
 log = {{ mysql_log }}
 {% endif %}
-log-error = {{ mysql_log_error }}
 {% endif %}
 
 {% if mysql_slow_query_log_enabled %}
